@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="体态训练">
+<title>体态训练打卡</title>
+<style>
+  :root {
+    --bg: #080810;
+    --surface: #10101e;
+    --border: #1c1c32;
+    --text: #ddddf0;
+    --muted: #44445a;
+    --accent1: #5ee7a0;
+    --accent2: #5ab4f7;
+    --accent3: #f07090;
+    --gold: #f5c842;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif; overflow-x: hidden; }
+
+/* Safe area for iPhone notch */
+.safe-top { padding-top: max(28px, env(safe-area-inset-top)); }
+.safe-bot { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+
+/* HEADER */
+.header {
+background: linear-gradient(170deg, #14142a 0%, #080810 100%);
+padding: 0 18px 16px;
+border-bottom: 1px solid var(–border);
+position: sticky; top: 0; z-index: 50;
+}
+.header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.header-title { font-size: 11px; letter-spacing: 3px; color: var(–muted); }
+.header-main { font-size: 20px; font-weight: 800; color: #fff; margin-top: 2px; }
+.streak-badge {
+background: linear-gradient(135deg, #f5a623, #e8304a);
+border-radius: 12px; padding: 7px 13px; text-align: center;
+min-width: 56px;
+}
+.streak-num { font-size: 20px; font-weight: 900; color: #fff; line-height: 1; }
+.streak-label { font-size: 9px; color: #fde68a; margin-top: 1px; }
+
+/* PHASE TABS */
+.phase-tabs { display: flex; gap: 6px; }
+.phase-tab {
+flex: 1; padding: 8px 4px; border-radius: 10px;
+border: 1.5px solid var(–border); background: transparent;
+color: var(–muted); font-size: 10px; font-weight: 700;
+cursor: pointer; transition: all 0.2s; line-height: 1.4;
+}
+.phase-tab.active { background: var(–active-color-bg); border-color: var(–active-color); color: var(–active-color); }
+
+/* NAV TABS */
+.nav { display: flex; background: #0b0b18; border-bottom: 1px solid var(–border); }
+.nav-btn {
+flex: 1; padding: 11px 4px; background: none; border: none;
+border-bottom: 2.5px solid transparent; color: var(–muted);
+font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s;
+}
+.nav-btn.active { color: var(–phase-color); border-bottom-color: var(–phase-color); }
+
+/* CONTENT */
+.content { padding: 16px 16px 0; }
+
+/* SESSION TABS */
+.session-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+.session-tab {
+flex: 1; padding: 10px 6px; border-radius: 12px;
+border: 1.5px solid var(–border); background: var(–surface);
+color: var(–muted); font-size: 11px; font-weight: 700;
+cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.session-tab.active { border-color: var(–phase-color); background: var(–phase-color-bg); color: var(–phase-color); }
+.session-tab .s-icon { font-size: 16px; display: block; margin-bottom: 3px; }
+.session-tab .s-dur { font-size: 9px; margin-top: 2px; opacity: 0.7; font-weight: 400; }
+
+/* PROGRESS */
+.progress-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 11px; }
+.progress-track { height: 4px; background: var(–border); border-radius: 4px; overflow: hidden; margin-bottom: 14px; }
+.progress-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
+
+/* EXERCISE CARDS */
+.ex-card {
+background: var(–surface); border: 1.5px solid var(–border);
+border-radius: 14px; padding: 14px; margin-bottom: 10px;
+cursor: pointer; transition: all 0.18s; user-select: none;
+}
+.ex-card.done { border-color: var(–phase-color); background: var(–phase-color-bg); }
+.ex-row { display: flex; gap: 11px; align-items: flex-start; }
+.check-circle {
+width: 24px; height: 24px; border-radius: 50%;
+border: 2px solid var(–muted); background: transparent;
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+font-size: 12px; font-weight: 900; color: #000;
+}
+.done .check-circle { background: var(–phase-color); border-color: var(–phase-color); }
+.ex-name {
+font-size: 14px; font-weight: 700; color: var(–text);
+transition: all 0.2s;
+}
+.done .ex-name { color: var(–phase-color); opacity: 0.75; text-decoration: line-through; }
+.ex-badge {
+font-size: 10px; color: var(–phase-color);
+background: var(–phase-color-bg); padding: 2px 8px;
+border-radius: 6px; flex-shrink: 0; margin-left: 8px; font-weight: 700;
+}
+.ex-detail { font-size: 12px; color: var(–muted); margin-top: 5px; line-height: 1.55; }
+.ex-tip {
+font-size: 11px; color: #5050a0; margin-top: 7px;
+padding: 5px 9px; background: #0a0a20;
+border-radius: 7px; border-left: 2.5px solid #5050a0; line-height: 1.5;
+}
+
+/* COMPLETE BANNER */
+.complete-banner {
+margin-top: 14px; padding: 16px; border- 
