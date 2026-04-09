@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -23,100 +22,570 @@
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'PingFang SC', 'Hiragino Sans GB', sans-serif; overflow-x: hidden; }
 
-/* Safe area for iPhone notch */
-.safe-top { padding-top: max(28px, env(safe-area-inset-top)); }
-.safe-bot { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+  /* Safe area for iPhone notch */
+  .safe-top { padding-top: max(28px, env(safe-area-inset-top)); }
+  .safe-bot { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
 
-/* HEADER */
-.header {
-background: linear-gradient(170deg, #14142a 0%, #080810 100%);
-padding: 0 18px 16px;
-border-bottom: 1px solid var(–border);
-position: sticky; top: 0; z-index: 50;
-}
-.header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-.header-title { font-size: 11px; letter-spacing: 3px; color: var(–muted); }
-.header-main { font-size: 20px; font-weight: 800; color: #fff; margin-top: 2px; }
-.streak-badge {
-background: linear-gradient(135deg, #f5a623, #e8304a);
-border-radius: 12px; padding: 7px 13px; text-align: center;
-min-width: 56px;
-}
-.streak-num { font-size: 20px; font-weight: 900; color: #fff; line-height: 1; }
-.streak-label { font-size: 9px; color: #fde68a; margin-top: 1px; }
+  /* HEADER */
+  .header {
+    background: linear-gradient(170deg, #14142a 0%, #080810 100%);
+    padding: 0 18px 16px;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .header-title { font-size: 11px; letter-spacing: 3px; color: var(--muted); }
+  .header-main { font-size: 20px; font-weight: 800; color: #fff; margin-top: 2px; }
+  .streak-badge {
+    background: linear-gradient(135deg, #f5a623, #e8304a);
+    border-radius: 12px; padding: 7px 13px; text-align: center;
+    min-width: 56px;
+  }
+  .streak-num { font-size: 20px; font-weight: 900; color: #fff; line-height: 1; }
+  .streak-label { font-size: 9px; color: #fde68a; margin-top: 1px; }
 
-/* PHASE TABS */
-.phase-tabs { display: flex; gap: 6px; }
-.phase-tab {
-flex: 1; padding: 8px 4px; border-radius: 10px;
-border: 1.5px solid var(–border); background: transparent;
-color: var(–muted); font-size: 10px; font-weight: 700;
-cursor: pointer; transition: all 0.2s; line-height: 1.4;
-}
-.phase-tab.active { background: var(–active-color-bg); border-color: var(–active-color); color: var(–active-color); }
+  /* PHASE TABS */
+  .phase-tabs { display: flex; gap: 6px; }
+  .phase-tab {
+    flex: 1; padding: 8px 4px; border-radius: 10px;
+    border: 1.5px solid var(--border); background: transparent;
+    color: var(--muted); font-size: 10px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; line-height: 1.4;
+  }
+  .phase-tab.active { background: var(--active-color-bg); border-color: var(--active-color); color: var(--active-color); }
 
-/* NAV TABS */
-.nav { display: flex; background: #0b0b18; border-bottom: 1px solid var(–border); }
-.nav-btn {
-flex: 1; padding: 11px 4px; background: none; border: none;
-border-bottom: 2.5px solid transparent; color: var(–muted);
-font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s;
-}
-.nav-btn.active { color: var(–phase-color); border-bottom-color: var(–phase-color); }
+  /* NAV TABS */
+  .nav { display: flex; background: #0b0b18; border-bottom: 1px solid var(--border); }
+  .nav-btn {
+    flex: 1; padding: 11px 4px; background: none; border: none;
+    border-bottom: 2.5px solid transparent; color: var(--muted);
+    font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s;
+  }
+  .nav-btn.active { color: var(--phase-color); border-bottom-color: var(--phase-color); }
 
-/* CONTENT */
-.content { padding: 16px 16px 0; }
+  /* CONTENT */
+  .content { padding: 16px 16px 0; }
 
-/* SESSION TABS */
-.session-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
-.session-tab {
-flex: 1; padding: 10px 6px; border-radius: 12px;
-border: 1.5px solid var(–border); background: var(–surface);
-color: var(–muted); font-size: 11px; font-weight: 700;
-cursor: pointer; transition: all 0.2s; text-align: center;
-}
-.session-tab.active { border-color: var(–phase-color); background: var(–phase-color-bg); color: var(–phase-color); }
-.session-tab .s-icon { font-size: 16px; display: block; margin-bottom: 3px; }
-.session-tab .s-dur { font-size: 9px; margin-top: 2px; opacity: 0.7; font-weight: 400; }
+  /* SESSION TABS */
+  .session-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+  .session-tab {
+    flex: 1; padding: 10px 6px; border-radius: 12px;
+    border: 1.5px solid var(--border); background: var(--surface);
+    color: var(--muted); font-size: 11px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; text-align: center;
+  }
+  .session-tab.active { border-color: var(--phase-color); background: var(--phase-color-bg); color: var(--phase-color); }
+  .session-tab .s-icon { font-size: 16px; display: block; margin-bottom: 3px; }
+  .session-tab .s-dur { font-size: 9px; margin-top: 2px; opacity: 0.7; font-weight: 400; }
 
-/* PROGRESS */
-.progress-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 11px; }
-.progress-track { height: 4px; background: var(–border); border-radius: 4px; overflow: hidden; margin-bottom: 14px; }
-.progress-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
+  /* PROGRESS */
+  .progress-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 11px; }
+  .progress-track { height: 4px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 14px; }
+  .progress-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
 
-/* EXERCISE CARDS */
-.ex-card {
-background: var(–surface); border: 1.5px solid var(–border);
-border-radius: 14px; padding: 14px; margin-bottom: 10px;
-cursor: pointer; transition: all 0.18s; user-select: none;
-}
-.ex-card.done { border-color: var(–phase-color); background: var(–phase-color-bg); }
-.ex-row { display: flex; gap: 11px; align-items: flex-start; }
-.check-circle {
-width: 24px; height: 24px; border-radius: 50%;
-border: 2px solid var(–muted); background: transparent;
-display: flex; align-items: center; justify-content: center;
-flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
-font-size: 12px; font-weight: 900; color: #000;
-}
-.done .check-circle { background: var(–phase-color); border-color: var(–phase-color); }
-.ex-name {
-font-size: 14px; font-weight: 700; color: var(–text);
-transition: all 0.2s;
-}
-.done .ex-name { color: var(–phase-color); opacity: 0.75; text-decoration: line-through; }
-.ex-badge {
-font-size: 10px; color: var(–phase-color);
-background: var(–phase-color-bg); padding: 2px 8px;
-border-radius: 6px; flex-shrink: 0; margin-left: 8px; font-weight: 700;
-}
-.ex-detail { font-size: 12px; color: var(–muted); margin-top: 5px; line-height: 1.55; }
-.ex-tip {
-font-size: 11px; color: #5050a0; margin-top: 7px;
-padding: 5px 9px; background: #0a0a20;
-border-radius: 7px; border-left: 2.5px solid #5050a0; line-height: 1.5;
+  /* EXERCISE CARDS */
+  .ex-card {
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 14px; margin-bottom: 10px;
+    cursor: pointer; transition: all 0.18s; user-select: none;
+  }
+  .ex-card.done { border-color: var(--phase-color); background: var(--phase-color-bg); }
+  .ex-row { display: flex; gap: 11px; align-items: flex-start; }
+  .check-circle {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 2px solid var(--muted); background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+    font-size: 12px; font-weight: 900; color: #000;
+  }
+  .done .check-circle { background: var(--phase-color); border-color: var(--phase-color); }
+  .ex-name {
+    font-size: 14px; font-weight: 700; color: var(--text);
+    transition: all 0.2s;
+  }
+  .done .ex-name { color: var(--phase-color); opacity: 0.75; text-decoration: line-through; }
+  .ex-badge {
+    font-size: 10px; color: var(--phase-color);
+    background: var(--phase-color-bg); padding: 2px 8px;
+    border-radius: 6px; flex-shrink: 0; margin-left: 8px; font-weight: 700;
+  }
+  .ex-detail { font-size: 12px; color: var(--muted); margin-top: 5px; line-height: 1.55; }
+  .ex-tip {
+    font-size: 11px; color: #5050a0; margin-top: 7px;
+    padding: 5px 9px; background: #0a0a20;
+    border-radius: 7px; border-left: 2.5px solid #5050a0; line-height: 1.5;
+  }
+
+  /* COMPLETE BANNER */
+  .complete-banner {
+    margin-top: 14px; padding: 16px; border-radius: 14px;
+    text-align: center; display: none;
+  }
+  .complete-banner.show { display: block; }
+
+  /* ANYTIME CARDS */
+  .anytime-card {
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
+  }
+  .anytime-head { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+  .anytime-icon { font-size: 20px; }
+  .anytime-name { font-size: 14px; font-weight: 700; color: var(--text); }
+  .anytime-detail { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* PROGRESS VIEW */
+  .stat-row { display: flex; gap: 10px; margin-bottom: 14px; }
+  .stat-card {
+    flex: 1; background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 14px; text-align: center;
+  }
+  .stat-val { font-size: 26px; font-weight: 900; }
+  .stat-label { font-size: 10px; color: var(--muted); margin-top: 3px; }
+  .bar-row { display: flex; gap: 5px; margin-bottom: 20px; }
+  .bar-col { flex: 1; text-align: center; }
+  .bar-wrap { height: 50px; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 5px; }
+  .bar-fill { width: 100%; border-radius: 6px 6px 0 0; min-height: 4px; transition: height 0.4s; }
+  .bar-label { font-size: 10px; }
+  .timeline-card {
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 16px;
+  }
+  .tl-title { font-size: 12px; font-weight: 700; color: #6060c0; margin-bottom: 12px; }
+  .tl-item { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+  .tl-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; flex-shrink: 0; margin-top: 1px; white-space: nowrap; }
+  .tl-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* BOTTOM PADDING */
+  .bottom-pad { height: 30px; }
+
+  /* SAVE HINT */
+  .save-hint {
+    background: #10101e; border: 1px solid #1c1c40;
+    border-radius: 14px; padding: 14px 16px; margin: 14px 16px 0;
+    font-size: 12px; color: #505070; line-height: 1.7;
+    display: none;
+  }
+  .save-hint.show { display: block; }
+  .save-hint strong { color: var(--accent2); }
+
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  .ex-card { animation: fadeIn 0.25s ease both; }
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- HEADER -->
+  <div class="header safe-top">
+    <div class="header-top">
+      <div>
+        <div class="header-title">体态矫正训练</div>
+        <div class="header-main">每日打卡</div>
+      </div>
+      <div class="streak-badge" id="streakBadge">
+        <div class="streak-num" id="streakNum">0</div>
+        <div class="streak-label">连续天</div>
+      </div>
+    </div>
+    <div class="phase-tabs" id="phaseTabs"></div>
+  </div>
+
+  <!-- SAVE HINT (shown once) -->
+  <div class="save-hint" id="saveHint">
+    📱 <strong>保存到桌面：</strong>点击 Safari 底部分享按钮 → 选择「添加到主屏幕」→ 即可像 App 一样使用
+  </div>
+
+  <!-- NAV -->
+  <div class="nav" id="nav">
+    <button class="nav-btn active" onclick="switchView('today')">今日训练</button>
+    <button class="nav-btn" onclick="switchView('anytime')">随时可做</button>
+    <button class="nav-btn" onclick="switchView('progress')">训练记录</button>
+  </div>
+
+  <!-- TODAY VIEW -->
+  <div id="view-today" class="view">
+    <div class="content">
+      <div style="font-size:11px; letter-spacing:2px; color:var(--phase-color); margin-bottom:12px; opacity:0.9;" id="phaseLabel"></div>
+      <div class="session-tabs" id="sessionTabs"></div>
+      <div class="progress-row">
+        <span style="font-size:11px;color:var(--muted)">今日进度</span>
+        <span style="font-size:11px;font-weight:700;color:var(--phase-color)" id="progressText">0/0 完成</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div id="exList"></div>
+      <div class="complete-banner" id="completeBanner">
+        <div style="font-size:28px;margin-bottom:8px">🎉</div>
+        <div style="font-size:15px;font-weight:800;color:var(--phase-color)">今日训练完成！</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:5px">坚持每天，3个月看见真正的改变</div>
+      </div>
+      <div class="bottom-pad"></div>
+    </div>
+  </div>
+
+  <!-- ANYTIME VIEW -->
+  <div id="view-anytime" class="view" style="display:none">
+    <div class="content">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.7">动车、出租车、讲课间隙都能做。每天碎片累积，效果远超一次健身房。</p>
+      <div id="anytimeList"></div>
+      <div class="anytime-card" style="margin-top:8px;border-color:#2a2a50">
+        <div class="anytime-head"><span class="anytime-icon">🎤</span><span class="anytime-name" style="color:#8080c0">讲师专属提醒</span></div>
+        <div class="anytime-detail" style="color:#404060;line-height:1.9">
+          · 每 30 分钟有意识重置站姿<br>
+          · 重心均匀分配双脚，避免长期偏向一侧<br>
+          · 讲课时想象头顶有绳子向上轻拉<br>
+          · 动车座位腰后垫折叠外套保持腰椎曲线<br>
+          · 手机举到眼睛平视高度，减少低头
+        </div>
+      </div>
+      <div class="bottom-pad"></div>
+    </div>
+  </div>
+
+  <!-- PROGRESS VIEW -->
+  <div id="view-progress" class="view" style="display:none">
+    <div class="content">
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-val" style="color:var(--gold)" id="statStreak">0</div>
+          <div class="stat-label">连续打卡天</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:var(--phase-color)" id="statWeek">0/7</div>
+          <div class="stat-label">本周完成</div>
+        </div>
+      </div>
+      <div style="font-size:12px;font-weight:700;color:#6060c0;margin-bottom:10px">最近 7 天</div>
+      <div class="bar-row" id="barRow"></div>
+      <div class="timeline-card">
+        <div class="tl-title">📈 预期改善时间线</div>
+        <div class="tl-item"><span class="tl-badge" style="color:var(--accent1);background:#0d2a1a">1–2 周</span><div class="tl-desc">腰背酸痛开始缓解，晨起僵硬感减少</div></div>
+        <div class="tl-item"><span class="tl-badge" style="color:var(--accent1);background:#0d2a1a">3–4 周</span><div class="tl-desc">呼吸变深，胸廓压迫感减轻，讲课底气更足</div></div>
+        <div class="tl-item"><span class="tl-badge" style="color:var(--accent2);background:#0d1e2e">5–8 周</span><div class="tl-desc">圆肩明显改善，肩膀自然后移</div></div>
+        <div class="tl-item"><span class="tl-badge" style="color:var(--accent2);background:#0d1e2e">8–12 周</span><div class="tl-desc">头前倾改善，颈部疲劳减少</div></div>
+        <div class="tl-item"><span class="tl-badge" style="color:var(--accent3);background:#2a0d18">3–6 月</span><div class="tl-desc">整体体态显著变化，他人可见</div></div>
+      </div>
+      <div class="bottom-pad"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// DATA — 无器械版，酒店地板 / 动车 / 出租车皆可
+// ============================================================
+const PHASES = [
+  {
+    id:'p1', name:'第一阶段', sub:'重置期', weeks:'第 1–4 周',
+    color:'#5ee7a0', colorBg:'rgba(94,231,160,0.10)',
+    sessions:[
+      { id:'morning', icon:'☀️', name:'早晨激活', dur:'8 分钟', exercises:[
+        { id:'m1', name:'下巴回收', badge:'×10次 每次10秒', detail:'仰躺在床上，下巴向后收，感受后颈被拉伸，保持10秒后放松', tip:'不是低头——是下巴平行向后推，想象有人轻推你下巴' },
+        { id:'m2', name:'肩胛骨后缩', badge:'×12次 每次5秒', detail:'坐在床沿或站立，双侧肩胛骨向脊柱方向夹紧，保持5秒后放松', tip:'肩膀不要上耸，只关注肩胛骨向中间靠' },
+        { id:'m3', name:'颈部侧拉伸', badge:'每侧30秒×2', detail:'头侧向一边，对侧手自然下垂，感受颈侧拉伸感', tip:'不要用手用力拉头，靠重力和颈部自然倾斜即可' },
+      ]},
+      { id:'evening', icon:'🌙', name:'晚间恢复', dur:'15 分钟', exercises:[
+        { id:'e1', name:'90/90 呼吸', badge:'×10次呼吸', detail:'仰卧，双腿搭在床沿或行李箱上，膝髋各90°。鼻吸气4秒感受肋骨四周扩张，嘴呼气6秒感受肋骨下沉', tip:'这是改善胸廓压缩最直接的动作，讲师声音会变得更有力量' },
+        { id:'e2', name:'胸椎枕头伸展', badge:'2–3 分钟', detail:'枕头横放在肩胛骨下方，躺上去双手抱头向后自然放松，慢慢移动至不同位置', tip:'哪里最紧就在哪里多停留，不要强行用力' },
+        { id:'e3', name:'髋屈肌拉伸', badge:'每侧45秒×2', detail:'一侧膝盖跪在酒店地板或床上，前脚踩地，身体直立向前推髋部', tip:'站立讲课4小时后髋屈肌持续缩短，这步做了腰背立刻轻松' },
+        { id:'e4', name:'猫牛式', badge:'慢速×15次', detail:'四点跪撑在地板上，慢速拱背（猫式）和塌腰抬头（牛式），重点感受胸椎在动', tip:'每个方向停留3秒，不要急，用胸椎带动而非腰椎' },
+        { id:'e5', name:'臀桥', badge:'3组×12次 顶部停3秒', detail:'仰卧屈膝双脚踩地，臀部发力向上抬起，顶部夹紧臀部停3秒再下放', tip:'臀肌激活后，腰椎压力会立刻减轻——这是你腰背痛的关键动作' },
+      ]},
+    ]
+  },
+  {
+    id:'p2', name:'第二阶段', sub:'激活期', weeks:'第 5–10 周',
+    color:'#5ab4f7', colorBg:'rgba(90,180,247,0.10)',
+    sessions:[
+      { id:'morning', icon:'☀️', name:'早晨激活', dur:'10 分钟', exercises:[
+        { id:'m1', name:'90/90 呼吸（热身）', badge:'×8次呼吸', detail:'维持基础呼吸习惯，为身体准备状态', tip:'每天早晨做这个，胸廓会逐渐打开' },
+        { id:'m2', name:'仰卧下巴回收', badge:'×12次 每次10秒', detail:'仰躺，下巴向后收同时轻轻点头，感受后颈深层肌肉激活', tip:'比站姿版效果更好，重力辅助减少代偿' },
+        { id:'m3', name:'肩胛后缩+保持', badge:'×10次 每次8秒', detail:'肩胛骨向脊柱夹紧并保持8秒，比第一阶段更长的等长保持', tip:'强度升级，为一天讲课的上半身做好准备' },
+      ]},
+      { id:'evening', icon:'🌙', name:'晚间训练', dur:'20 分钟', exercises:[
+        { id:'e1', name:'死虫式', badge:'3组×8次/侧', detail:'仰卧，手臂指向天花板，膝盖90°。呼气时对侧手脚缓慢伸出，腰部全程贴地，吸气时收回', tip:'腰离地就停——这是最重要的要求。这个动作是改善腰背痛性价比最高的' },
+        { id:'e2', name:'鸟狗式', badge:'3组×10次/侧', detail:'四点跪撑，对侧手脚缓慢伸展到水平，骨盆不能旋转，保持2秒后缓慢收回', tip:'速度越慢效果越好，感受核心在抵抗旋转力' },
+        { id:'e3', name:'俯卧 YWT', badge:'每字母×10次', detail:'俯卧在地板上，手臂分别摆成Y形、W形、T形并尽量抬离地面，保持2秒', tip:'激活中下斜方肌，直接对抗驼背——感受肩胛骨向脊柱靠拢' },
+        { id:'e4', name:'单腿臀桥', badge:'3组×10次/侧', detail:'仰卧屈膝，一腿抬起，单腿发力抬臀，顶部停2秒', tip:'比双腿版更强，改善骨盆稳定性和两侧力量不平衡' },
+        { id:'e5', name:'侧卧蚌式', badge:'3组×15次/侧', detail:'侧卧，膝盖弯曲，脚跟并拢，上方膝盖缓慢向上打开如蚌壳，再慢慢收回', tip:'激活臀中肌，改善骨盆稳定，间接减轻腰背压力' },
+        { id:'e6', name:'靠墙天使', badge:'×10次 慢速', detail:'背部、腰部、头部贴墙，手臂弯曲贴墙，缓慢沿墙向上伸直再收回', tip:'最难贴墙的位置就是最需要改善的地方，不要强迫贴合' },
+      ]},
+    ]
+  },
+  {
+    id:'p3', name:'第三阶段', sub:'强化期', weeks:'第 11 周起',
+    color:'#f07090', colorBg:'rgba(240,112,144,0.10)',
+    sessions:[
+      { id:'morning', icon:'☀️', name:'早晨激活', dur:'10 分钟', exercises:[
+        { id:'m1', name:'呼吸 + 胸椎放松', badge:'5 分钟', detail:'90/90 呼吸8次 + 枕头胸椎伸展2分钟，维持基础习惯', tip:'长期坚持的基础，任何阶段都不能省略' },
+        { id:'m2', name:'全身动态热身', badge:'5 分钟', detail:'髋关节环绕×10 + 肩关节环绕×10 + 猫牛式×10，为复合训练准备', tip:'慢速进行，感受每个关节的活动范围' },
+      ]},
+      { id:'evening', icon:'🌙', name:'晚间强化', dur:'25 分钟', exercises:[
+        { id:'e1', name:'俯卧撑（标准/跪姿）', badge:'3组×尽力次数', detail:'全程身体像一块木板，核心收紧，胸部接近地面后推起，肩胛骨在运动中保持稳定', tip:'初期用跪姿俯卧撑，核心稳定后过渡到标准版' },
+        { id:'e2', name:'深蹲', badge:'3组×15次', detail:'双脚与肩同宽，挺胸抬头，臀部缓慢向后下坐，大腿平行地面后站起', tip:'膝盖跟脚尖方向一致，不要内扣——同时训练全身协调和核心稳定' },
+        { id:'e3', name:'超人式', badge:'3组×12次', detail:'俯卧，同时抬起双臂和双腿，保持2秒后放下，感受整个背部链收缩', tip:'比YWT更进一步，强化整体后链——对腰背酸痛改善效果极佳' },
+        { id:'e4', name:'死虫式（进阶）', badge:'3组×10次/侧', detail:'加长伸出后停留3秒，再缓慢收回，全程配合呼吸节奏', tip:'每个阶段都保留这个动作，是你最重要的核心训练' },
+        { id:'e5', name:'平板支撑', badge:'3组×30–60秒', detail:'前臂撑地，身体成一条直线，核心收紧，臀部不要塌陷或抬高', tip:'到这个阶段你的核心已经建立基础，平板支撑是整合训练' },
+        { id:'e6', name:'靠墙天使（升级）', badge:'×12次', detail:'同上，但手臂完全伸直时在墙上停留3秒再收回', tip:'体态改善的集成测试——能做好这个说明整体在进步' },
+      ]},
+    ]
+  }
+];
+
+const ANYTIME = [
+  { icon:'🧠', name:'下巴回收', detail:'任何时候都能做。下巴平行向后推，保持10秒 × 10次。坐车、等电梯、讲课间隙均可' },
+  { icon:'💪', name:'肩胛骨后缩', detail:'双侧肩胛向脊柱靠拢，保持5秒后放松 × 10次。坐着就能做，无人察觉' },
+  { icon:'🌬️', name:'坐姿腹式呼吸', detail:'坐直，手放腹部，鼻吸气感受腹部向外扩，嘴呼气。改善胸廓压缩，5分钟就有感觉' },
+  { icon:'🚄', name:'动车颈部放松', detail:'头缓慢向左右各倾斜，保持30秒。再缓慢向前低头，感受后颈拉伸。不要旋转颈部' },
+  { icon:'🚕', name:'出租车坐姿', detail:'腰后垫折叠外套或包，让腰椎保持自然曲线，而不是塌陷在座椅里' },
+  { icon:'📱', name:'手机高度习惯', detail:'把手机举到眼睛平视的高度。头每前倾1寸，颈椎多承受约4公斤压力' },
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let state = {
+  phase: 0,
+  session: 'evening',
+  view: 'today',
+  checked: {},    // key: "YYYY-MM-DD_exId" → true
+  history: {},    // key: "YYYY-MM-DD" → [exIds done]
+  streak: 0,
+  hintShown: false,
+};
+
+function todayKey() {
+  return new Date().toISOString().split('T')[0];
 }
 
-/* COMPLETE BANNER */
-.complete-banner {
-margin-top: 14px; padding: 16px; border- 
+function save() {
+  localStorage.setItem('pt_checked', JSON.stringify(state.checked));
+  localStorage.setItem('pt_history', JSON.stringify(state.history));
+  localStorage.setItem('pt_phase', state.phase);
+  localStorage.setItem('pt_session', state.session);
+  localStorage.setItem('pt_hint', state.hintShown ? '1' : '0');
+}
+
+function load() {
+  try {
+    const c = localStorage.getItem('pt_checked'); if(c) state.checked = JSON.parse(c);
+    const h = localStorage.getItem('pt_history'); if(h) { state.history = JSON.parse(h); calcStreak(); }
+    const p = localStorage.getItem('pt_phase'); if(p !== null) state.phase = parseInt(p);
+    const s = localStorage.getItem('pt_session'); if(s) state.session = s;
+    const hint = localStorage.getItem('pt_hint'); state.hintShown = hint === '1';
+  } catch(e) {}
+}
+
+function calcStreak() {
+  let s = 0, d = new Date();
+  while(true) {
+    const k = d.toISOString().split('T')[0];
+    if(state.history[k] && state.history[k].length > 0) { s++; d.setDate(d.getDate()-1); }
+    else break;
+  }
+  state.streak = s;
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function phaseColor() { return PHASES[state.phase].color; }
+function phaseBg() { return PHASES[state.phase].colorBg; }
+
+function applyPhaseColor() {
+  document.documentElement.style.setProperty('--phase-color', phaseColor());
+  document.documentElement.style.setProperty('--phase-color-bg', phaseBg());
+}
+
+function renderPhaseTabs() {
+  const el = document.getElementById('phaseTabs');
+  el.innerHTML = PHASES.map((p,i) => `
+    <button class="phase-tab ${i===state.phase?'active':''}" 
+      style="--active-color:${p.color};--active-color-bg:${p.colorBg}"
+      onclick="selectPhase(${i})">
+      ${p.name}<br><span style="font-weight:400;font-size:9px">${p.sub}</span>
+    </button>
+  `).join('');
+}
+
+function renderStreak() {
+  document.getElementById('streakNum').textContent = state.streak;
+  const badge = document.getElementById('streakBadge');
+  badge.style.background = state.streak > 0
+    ? 'linear-gradient(135deg,#f5a623,#e8304a)'
+    : '#1e1e3a';
+}
+
+function renderToday() {
+  const phase = PHASES[state.phase];
+  document.getElementById('phaseLabel').textContent = `${phase.weeks} · ${phase.sub}`;
+  document.getElementById('phaseLabel').style.color = phaseColor();
+
+  // session tabs
+  const stabs = document.getElementById('sessionTabs');
+  stabs.innerHTML = phase.sessions.map(s => `
+    <button class="session-tab ${s.id===state.session?'active':''}" onclick="selectSession('${s.id}')">
+      <span class="s-icon">${s.icon}</span>
+      ${s.name}
+      <div class="s-dur">${s.dur}</div>
+    </button>
+  `).join('');
+
+  const session = phase.sessions.find(s=>s.id===state.session) || phase.sessions[0];
+  const today = todayKey();
+  const total = session.exercises.length;
+  const done = session.exercises.filter(e=>state.checked[`${today}_${e.id}`]).length;
+  const pct = total ? Math.round(done/total*100) : 0;
+
+  document.getElementById('progressText').textContent = `${done}/${total} 完成`;
+  document.getElementById('progressText').style.color = phaseColor();
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('progressFill').style.background = `linear-gradient(90deg,${phaseColor()}60,${phaseColor()})`;
+
+  const list = document.getElementById('exList');
+  list.innerHTML = session.exercises.map((ex,idx) => {
+    const ck = state.checked[`${today}_${ex.id}`];
+    return `
+    <div class="ex-card ${ck?'done':''}" onclick="toggleEx('${ex.id}')"
+      style="animation-delay:${idx*0.04}s;--phase-color:${phaseColor()};--phase-color-bg:${phaseBg()}">
+      <div class="ex-row">
+        <div class="check-circle" style="${ck?`background:${phaseColor()};border-color:${phaseColor()}`:''}">
+          ${ck?'✓':''}
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="ex-name" style="${ck?`color:${phaseColor()}`:''}"> ${ex.name}</div>
+            <div class="ex-badge" style="color:${phaseColor()};background:${phaseBg()}">${ex.badge}</div>
+          </div>
+          <div class="ex-detail">${ex.detail}</div>
+          ${ex.tip?`<div class="ex-tip">💡 ${ex.tip}</div>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const banner = document.getElementById('completeBanner');
+  if(pct===100) {
+    banner.classList.add('show');
+    banner.style.background = `linear-gradient(135deg,${phaseColor()}20,${phaseColor()}08)`;
+    banner.style.border = `1px solid ${phaseColor()}40`;
+  } else {
+    banner.classList.remove('show');
+  }
+}
+
+function renderAnytime() {
+  document.getElementById('anytimeList').innerHTML = ANYTIME.map(a=>`
+    <div class="anytime-card">
+      <div class="anytime-head">
+        <span class="anytime-icon">${a.icon}</span>
+        <span class="anytime-name">${a.name}</span>
+      </div>
+      <div class="anytime-detail">${a.detail}</div>
+    </div>
+  `).join('');
+}
+
+function renderProgress() {
+  document.getElementById('statStreak').textContent = state.streak;
+  document.getElementById('statStreak').style.color = state.streak>0?'var(--gold)':'var(--muted)';
+
+  const days=['日','一','二','三','四','五','六'];
+  const last7 = Array.from({length:7},(_,i)=>{
+    const d=new Date(); d.setDate(d.getDate()-(6-i));
+    const k=d.toISOString().split('T')[0];
+    return { k, label:days[d.getDay()], done:state.history[k]?state.history[k].length:0, isToday:k===todayKey() };
+  });
+  const weekDone = last7.filter(d=>d.done>0).length;
+  document.getElementById('statWeek').textContent = `${weekDone}/7`;
+  document.getElementById('statWeek').style.color = phaseColor();
+
+  const maxDone = Math.max(...last7.map(d=>d.done),1);
+  document.getElementById('barRow').innerHTML = last7.map(d=>{
+    const h = Math.max(4, Math.round((d.done/maxDone)*46));
+    return `
+    <div class="bar-col">
+      <div class="bar-wrap">
+        <div class="bar-fill" style="height:${h}px;background:${d.done>0?phaseColor():'var(--border)'}"></div>
+      </div>
+      <div class="bar-label" style="color:${d.isToday?phaseColor():'var(--muted)'}">${d.label}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderSaveHint() {
+  const hint = document.getElementById('saveHint');
+  if(!state.hintShown) {
+    hint.classList.add('show');
+    setTimeout(()=>{
+      state.hintShown = true;
+      hint.classList.remove('show');
+      save();
+    }, 8000);
+  }
+}
+
+function render() {
+  applyPhaseColor();
+  renderPhaseTabs();
+  renderStreak();
+  renderToday();
+  renderAnytime();
+  renderProgress();
+}
+
+// ============================================================
+// ACTIONS
+// ============================================================
+function selectPhase(i) {
+  state.phase = i;
+  // reset to evening when switching phase
+  state.session = 'evening';
+  save(); render();
+}
+
+function selectSession(id) {
+  state.session = id;
+  save(); renderToday();
+}
+
+function toggleEx(exId) {
+  const today = todayKey();
+  const key = `${today}_${exId}`;
+  state.checked[key] = !state.checked[key];
+
+  // Update history
+  const phase = PHASES[state.phase];
+  const session = phase.sessions.find(s=>s.id===state.session);
+  const allChecked = session.exercises
+    .filter(e=>state.checked[`${today}_${e.id}`])
+    .map(e=>e.id);
+  state.history[today] = allChecked;
+  calcStreak();
+  save(); render();
+}
+
+function switchView(v) {
+  state.view = v;
+  document.querySelectorAll('.view').forEach(el=>el.style.display='none');
+  document.getElementById('view-'+v).style.display='block';
+  document.querySelectorAll('.nav-btn').forEach((btn,i)=>{
+    btn.classList.toggle('active', ['today','anytime','progress'][i]===v);
+  });
+  applyPhaseColor();
+  document.querySelectorAll('.nav-btn').forEach((btn,i)=>{
+    if(['today','anytime','progress'][i]===v) btn.style.color=phaseColor();
+    else btn.style.color='';
+  });
+}
+
+// ============================================================
+// INIT
+// ============================================================
+load();
+render();
+renderSaveHint();
+</script>
+</body>
+</html>
